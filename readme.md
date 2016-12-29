@@ -2,7 +2,7 @@
 
 ## Installation
 
-`composer require alfred-nutile-inc/larscanner`
+`composer require alfred-nutile-inc/larscanner:dev-master`
 
 Add to `config/app.php`
 
