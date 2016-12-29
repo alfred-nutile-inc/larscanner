@@ -2,6 +2,8 @@
 
 ## Installation
 
+`composer require alfred-nutile-inc/larscanner`
+
 Add to `config/app.php`
 
 ~~~
