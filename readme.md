@@ -34,20 +34,17 @@ You can turn slack off if needed by (todo)
 
 
 ### TODO
-Run nightly
-Send as slack and or email
-Allow slack to be turned off
 
-
+* Allow slack to be turned off
 
 ## Roadmap
 
-Can we scan our code?
+* Can we scan our code? Something like http://brakemanscanner.org/
 
-What other well known libraries are there?
+* What other well known libraries are there?
 
-Some good links [phparch nov 2016](https://www.phparch.com/2016/11/november-2016-moving-forward/)
+* Some good links [phparch nov 2016](https://www.phparch.com/2016/11/november-2016-moving-forward/) good article with links to a number of services and php tools
 
-can we find laravel vulnerabilities and scan our site nightly
+* can we find laravel vulnerabilities and scan our site nightly
 
-use behat to try and break into our sites?
+* use behat to try and break into our sites?
