@@ -1,0 +1,22 @@
+{
+    "simplesamlphp\/saml2": {
+        "version": "v1.10",
+        "advisories": {
+            "simplesamlphp\/saml2\/201612-01.yaml": {
+                "title": "Incorrect signature verification",
+                "link": "https:\/\/simplesamlphp.org\/security\/201612-01",
+                "cve": ""
+            }
+        }
+    },
+    "swiftmailer\/swiftmailer": {
+        "version": "5.x-dev",
+        "advisories": {
+            "swiftmailer\/swiftmailer\/CVE-2016-10074.yaml": {
+                "title": "Remote Code Execution when using the mail transport",
+                "link": "https:\/\/legalhackers.com\/advisories\/SwiftMailer-Exploit-Remote-Code-Exec-CVE-2016-10074-Vuln.html",
+                "cve": "CVE-2016-10074"
+            }
+        }
+    }
+}
