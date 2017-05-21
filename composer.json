@@ -7,12 +7,6 @@
             "email": "me@alfrednutile.info"
         }
     ],
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/alfred-nutile-inc/cd"
-        }
-    ],
     "require": {
         "php": ">=5.5.9",
         "sensiolabs/security-checker": "dev-master",
