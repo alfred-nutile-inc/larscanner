@@ -18,7 +18,6 @@ class LarScannerProvider extends \Illuminate\Support\ServiceProvider
     public function boot()
     {
         parent::boot();
-
     }
 
     /**
@@ -38,13 +37,10 @@ class LarScannerProvider extends \Illuminate\Support\ServiceProvider
         Event::listen('security.results', function ($from, $results) {
 
             try {
-
                 (new SlackNotify())->handle($from, $results);
-
             } catch (\Exception $e) {
                 Log::debug(sprintf("Error sending slack message %s", $e->getMessage()));
             }
-
         });
     }
 

@@ -20,18 +20,15 @@ class SendSlackNotice
 
     public function sendMessageToSlack($message)
     {
-        try
-        {
+        try {
             $this->client->post(
-                $this->getSlackUrl(), null, $this->message($message)
+                $this->getSlackUrl(),
+                null,
+                $this->message($message)
             )->send();
-        }
-        catch(\Exception $e)
-        {
+        } catch (\Exception $e) {
             Log::debug(sprintf("Error sending to Slack %s", $e->getMessage()));
         }
-
-
     }
 
     protected function message($message)
@@ -46,8 +43,9 @@ class SendSlackNotice
 
     public function getSlackUrl()
     {
-        if(!$this->slack_url)
+        if (!$this->slack_url) {
             return env('SLACK_URL');
+        }
 
         return $this->slack_url;
     }

@@ -3,7 +3,6 @@
 
 namespace AlfredNutileInc\LarScanner\Listeners;
 
-
 use AlfredNutileInc\LarScanner\ResultDTO;
 use AlfredNutileInc\LarScanner\SendSlackNotice;
 use Guzzle\Http\Client;
@@ -17,22 +16,24 @@ class SlackNotify
      */
     protected $send_slack;
 
-    public function handle($from, array $messages) {
+    public function handle($from, array $messages)
+    {
 
-        if(!env('SECURITY_NOTICE_SLACK_URL')) {
+        if (!env('SECURITY_NOTICE_SLACK_URL')) {
             throw new \Exception("SECURITY_NOTICE_SLACK_URL not set in .env");
         }
 
         $this->getSendSlack()->setSlackUrl(env('SECURITY_NOTICE_SLACK_URL'));
 
         /** @var ResultDTO $message */
-        foreach($messages as $message) {
+        foreach ($messages as $message) {
             $message_formatted = $this->processMessage($message, $from);
             $this->getSendSlack()->sendMessageToSlack($message_formatted);
         }
     }
 
-    protected function processMessage(ResultDTO $message, $from) {
+    protected function processMessage(ResultDTO $message, $from)
+    {
 
         $app_name = $this->getAppName();
 
@@ -54,7 +55,7 @@ class SlackNotify
      */
     public function getSendSlack()
     {
-        if(!$this->send_slack) {
+        if (!$this->send_slack) {
             $this->setSendSlack();
         }
         return $this->send_slack;
@@ -65,7 +66,7 @@ class SlackNotify
      */
     public function setSendSlack($send_slack = null)
     {
-        if(!$send_slack) {
+        if (!$send_slack) {
             $send_slack = new SendSlackNotice(new Client());
         }
         $this->send_slack = $send_slack;
@@ -73,11 +74,10 @@ class SlackNotify
 
     private function getAppName()
     {
-        if($name = env("APP_NAME")) {
+        if ($name = env("APP_NAME")) {
             return $name;
         }
 
         return url()->current();
     }
-
 }

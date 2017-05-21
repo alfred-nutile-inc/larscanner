@@ -18,7 +18,8 @@ class SensioLabsScanner extends BaseScanner
     protected $checker;
 
 
-    public function handle() {
+    public function handle()
+    {
         $this->results = $this->getChecker()->check($this->getComposerLockPath());
 
         $this->transformMessage();
@@ -29,22 +30,20 @@ class SensioLabsScanner extends BaseScanner
          */
 
         $this->triggerNotificationEvent();
-
     }
 
-    public function transformMessage() {
+    public function transformMessage()
+    {
 
-        if($this->results) {
+        if ($this->results) {
             $results = $this->results;
             $this->results = [];
-            foreach($results as $library => $result) {
-                foreach($result['advisories'] as $advisory) {
-
+            foreach ($results as $library => $result) {
+                foreach ($result['advisories'] as $advisory) {
                     $this->results[] = new ResultDTO($advisory['title'], $advisory['link'], $library);
                 }
             }
         }
-
     }
 
     /**
@@ -70,7 +69,7 @@ class SensioLabsScanner extends BaseScanner
      */
     public function getChecker()
     {
-        if(!$this->checker) {
+        if (!$this->checker) {
             $this->setChecker();
         }
         return $this->checker;
@@ -81,12 +80,10 @@ class SensioLabsScanner extends BaseScanner
      */
     public function setChecker($checker = null)
     {
-        if($checker == null) {
+        if ($checker == null) {
             $checker = new SecurityChecker();
-
         }
 
         $this->checker = $checker;
     }
-
 }

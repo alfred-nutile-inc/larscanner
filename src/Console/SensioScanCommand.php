@@ -40,17 +40,22 @@ class SensioScanCommand extends Command
         try {
             $scanner->setComposerLockPath(base_path())->handle();
 
-            if($scanner->getResults()) {
+            if ($scanner->getResults()) {
                 /** @var ResultDTO $result */
-                foreach($scanner->getResults() as $result) {
-                    $this->info(sprintf("Security Issues found %s %s %s",
-                        $result->title, $result->body, $result->library));
+                foreach ($scanner->getResults() as $result) {
+                    $this->info(sprintf(
+                        "Security Issues found %s %s %s",
+                        $result->title,
+                        $result->body,
+                        $result->library
+                    ));
                 }
             }
-
         } catch (\Exception $e) {
-            Log::debug(sprintf("Error running sensio labs scanner %s",
-                $e->getMessage()));
+            Log::debug(sprintf(
+                "Error running sensio labs scanner %s",
+                $e->getMessage()
+            ));
         }
     }
 }

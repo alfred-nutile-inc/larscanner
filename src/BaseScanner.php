@@ -3,7 +3,6 @@
 
 namespace AlfredNutileInc\LarScanner;
 
-
 use Illuminate\Support\Facades\Log;
 
 abstract class BaseScanner
@@ -12,9 +11,9 @@ abstract class BaseScanner
 
     protected $name = "LarScanner";
 
-    abstract function handle();
+    abstract public function handle();
 
-    abstract function transformMessage();
+    abstract public function transformMessage();
 
     /**
      * @return mixed
@@ -24,12 +23,12 @@ abstract class BaseScanner
         return $this->results;
     }
 
-    protected function triggerNotificationEvent() {
-        if($this->results) {
+    protected function triggerNotificationEvent()
+    {
+        if ($this->results) {
             event('security.results', [$this->name, $this->results]);
         } else {
             Log::debug(sprintf("No results for %s", $this->name));
         }
     }
-
 }

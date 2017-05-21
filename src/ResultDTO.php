@@ -3,7 +3,6 @@
 
 namespace AlfredNutileInc\LarScanner;
 
-
 class ResultDTO
 {
 
@@ -17,5 +16,4 @@ class ResultDTO
         $this->body = $body;
         $this->library = $library;
     }
-
 }
