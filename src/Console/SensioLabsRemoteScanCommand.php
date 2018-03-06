@@ -8,6 +8,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
 use AlfredNutileInc\LarScanner\SensioLabsRemoteScanner;
+use function GuzzleHttp\json_encode;
 
 class SensioLabsRemoteScanCommand extends Command
 {

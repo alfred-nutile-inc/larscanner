@@ -132,8 +132,4 @@ class SensioLabsRemoteScanner extends BaseSensioScanner
         $this->config = $config;
         return $this;
     }
-
-
-
-
 }
