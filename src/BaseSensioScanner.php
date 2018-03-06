@@ -31,7 +31,7 @@ class BaseSensioScanner extends BaseScanner
 
     protected function checkResultsFormat()
     {
-        if (get_class($this->results) === "SensioLabs\Security\Result") {
+        if (!is_array($this->results) && get_class($this->results) === "SensioLabs\Security\Result") {
             $this->results = json_decode($this->results, 128);
         }
     }
