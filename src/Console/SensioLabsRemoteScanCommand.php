@@ -7,6 +7,7 @@ use AlfredNutileInc\LarScanner\SensioLabsScanner;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Log;
+use AlfredNutileInc\LarScanner\SensioLabsRemoteScanner;
 
 class SensioLabsRemoteScanCommand extends Command
 {
@@ -35,21 +36,22 @@ class SensioLabsRemoteScanCommand extends Command
      * @param SensioLabsScanner $scanner
      * @return mixed
      */
-    public function handle(SensioLabsScanner $scanner)
+    public function handle(SensioLabsRemoteScanner $scanner)
     {
         try {
-            $scanner->setComposerLockPath(base_path())->handle();
-
+            $this->info("Runing report for URL");
+            $scanner->setComposerLockPath($this->argument("github_http_url"))->handle();
             if ($scanner->getResults()) {
-                /** @var ResultDTO $result */
                 foreach ($scanner->getResults() as $result) {
-                    $this->info(sprintf(
+                    $this->error(sprintf(
                         "Security Issues found %s %s %s",
                         $result->title,
                         $result->body,
                         $result->library
                     ));
                 }
+            } else {
+                $this->info("No volnerabilities found");
             }
         } catch (\Exception $e) {
             Log::debug(sprintf(

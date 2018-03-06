@@ -17,7 +17,7 @@ class BaseSensioScanner extends BaseScanner
     public function transformMessage()
     {
 
-        dd($this->results);
+        $this->checkResultsFormat();
         if ($this->results) {
             $results = $this->results;
             $this->results = [];
@@ -26,6 +26,13 @@ class BaseSensioScanner extends BaseScanner
                     $this->results[] = new ResultDTO($advisory['title'], $advisory['link'], $library);
                 }
             }
+        }
+    }
+
+    protected function checkResultsFormat()
+    {
+        if (get_class($this->results) === "SensioLabs\Security\Result") {
+            $this->results = json_decode($this->results, 128);
         }
     }
 
