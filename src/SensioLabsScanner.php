@@ -36,7 +36,4 @@ class SensioLabsScanner extends BaseSensioScanner
 
         $this->triggerNotificationEvent();
     }
-
-
-
 }

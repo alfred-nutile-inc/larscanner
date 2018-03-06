@@ -17,7 +17,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
         return
             [
             LarScannerProvider::class,
-        ];
+            ];
     }
 
 
@@ -52,5 +52,4 @@ class TestCase extends \Orchestra\Testbench\TestCase
 
         $app['config']->set('cache.stores.file.path', $destination);
     }
-
 }
