@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Log;
 
 abstract class BaseScanner
 {
-    public $results;
+    public $results = [];
 
     protected $name = "LarScanner";
 

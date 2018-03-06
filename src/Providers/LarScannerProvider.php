@@ -7,18 +7,16 @@ use AlfredNutileInc\LarScanner\Listeners\SlackNotify;
 use Illuminate\Console\Events\ArtisanStarting;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Log;
+use AlfredNutileInc\LarScanner\Console\SensioLabsRemoteScanCommand;
 
 class LarScannerProvider extends \Illuminate\Support\ServiceProvider
 {
 
     protected $commands = [
         'Sensio' => 'command.sensio',
+        'SensioRemote' => 'command.sensio_remote',
     ];
 
-    public function boot()
-    {
-        parent::boot();
-    }
 
     /**
      * Register the service provider.
@@ -46,7 +44,6 @@ class LarScannerProvider extends \Illuminate\Support\ServiceProvider
 
     private function registerCommands()
     {
-
         foreach (array_keys($this->commands) as $command) {
             $method = "register{$command}Command";
 
@@ -65,6 +62,13 @@ class LarScannerProvider extends \Illuminate\Support\ServiceProvider
     {
         $this->app->singleton('command.sensio', function ($app) {
             return new SensioScanCommand();
+        });
+    }
+
+    protected function registerSensioRemoteCommand()
+    {
+        $this->app->singleton('command.sensio_remote', function ($app) {
+            return new SensioLabsRemoteScanCommand();
         });
     }
 }
